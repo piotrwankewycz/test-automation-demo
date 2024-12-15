@@ -1,5 +1,6 @@
 package org.example.config;
 
+import io.restassured.RestAssured;
 import org.example.utils.SetupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ public class TestConfig {
 
     static {
         loadAllProperties();
+        RestAssured.baseURI = APIConfig.getBaseUrl();
     }
 
     private TestConfig() {
