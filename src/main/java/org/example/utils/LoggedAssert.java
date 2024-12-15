@@ -7,6 +7,9 @@ import org.testng.Assert;
 public class LoggedAssert {
     private static final Logger log = LoggerFactory.getLogger(LoggedAssert.class);
 
+    private LoggedAssert() {
+    }
+
     public static void assertEquals(String actual, String expected, String message) {
         try {
             Assert.assertEquals(actual, expected, message);

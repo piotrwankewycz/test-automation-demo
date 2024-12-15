@@ -9,7 +9,7 @@ public abstract class BaseScreen {
     protected AndroidDriver driver;
     protected WebDriverWait wait;
 
-    public BaseScreen(AndroidDriver driver) {
+    protected BaseScreen(AndroidDriver driver) {
         this.driver = driver;
         // Selenium's WebDriverWait for explicit waits
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

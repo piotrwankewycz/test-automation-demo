@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 public class AndroidConfig {
     private static final Logger log = LoggerFactory.getLogger(AndroidConfig.class);
 
+    private AndroidConfig() {
+    }
+
     // Get configurations using TestConfig
     public static String getDeviceName() {
         return TestConfig.getRequiredProperty("android.deviceName");

@@ -1,5 +1,6 @@
 package org.example.config;
 
+import org.example.utils.SetupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,6 +18,9 @@ public class TestConfig {
         loadAllProperties();
     }
 
+    private TestConfig() {
+    }
+
     private static void loadAllProperties() {
         try {
             // Load properties in specific order
@@ -27,8 +31,7 @@ public class TestConfig {
             logConfiguration();
 
         } catch (IOException e) {
-            //log.error("Failed to load properties", e);
-            throw new RuntimeException("Failed to load configuration files", e);
+            throw new SetupException("Failed to load configuration files", e);
         }
     }
 
@@ -54,7 +57,7 @@ public class TestConfig {
     public static String getRequiredProperty(String key) {
         String value = props.getProperty(key);
         if (value == null) {
-            throw new RuntimeException("Required property not found: " + key);
+            throw new SetupException("Required property not found: " + key);
         }
         return value;
     }

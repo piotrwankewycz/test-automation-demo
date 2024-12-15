@@ -12,6 +12,9 @@ public class DriverManager {
     private static final Logger log = LoggerFactory.getLogger(DriverManager.class);
     private static final ThreadLocal<AndroidDriver> androidDriver = new ThreadLocal<>();
 
+    private DriverManager() {
+    }
+
     public static AndroidDriver getAndroidDriver() {
         log.info("Getting AndroidDriver");
         AndroidDriver driver = androidDriver.get();
@@ -30,8 +33,7 @@ public class DriverManager {
                     AndroidConfig.getCapabilities()
             );
         } catch (Exception e) {
-            log.error("Failed to create AndroidDriver", e);
-            throw new RuntimeException("Failed to create Android driver", e);
+            throw new SetupException("Failed to create Android driver", e);
         }
     }
 
