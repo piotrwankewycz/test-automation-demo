@@ -1,6 +1,5 @@
 package org.example.config;
 
-import io.restassured.RestAssured;
 import org.example.utils.SetupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +16,7 @@ public class TestConfig {
 
     static {
         loadAllProperties();
-        RestAssured.baseURI = APIConfig.getBaseUrl();
+
     }
 
     private TestConfig() {
@@ -28,6 +27,7 @@ public class TestConfig {
             // Load properties in specific order
             loadPropertiesFile("base.properties");        // Base properties
             loadPropertiesFile("android.properties");     // Android specific
+            loadPropertiesFile("api.properties");     // Android specific
 
             // Log loaded properties
             logConfiguration();
