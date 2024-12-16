@@ -10,7 +10,7 @@ public class LoggedAssert {
     private LoggedAssert() {
     }
 
-    public static void assertEquals(String actual, String expected, String message) {
+    private static <T> void assertEqualsGeneric(T actual, T expected, String message) {
         try {
             Assert.assertEquals(actual, expected, message);
             log.info("Assertion PASSED: {} - Expected: '{}', Actual: '{}'", message, expected, actual);
@@ -18,6 +18,18 @@ public class LoggedAssert {
             log.error("Assertion FAILED: {} - Expected: '{}', Actual: '{}'", message, expected, actual);
             throw e;
         }
+    }
+
+    public static void assertEquals(String actual, String expected, String message) {
+        assertEqualsGeneric(actual, expected, message);
+    }
+
+    public static void assertEquals(Boolean actual, Boolean expected, String message) {
+        assertEqualsGeneric(actual, expected, message);
+    }
+
+    public static void assertEquals(Number actual, Number expected, String message) {
+        assertEqualsGeneric(actual, expected, message);
     }
 
     public static void assertTrue(boolean condition, String message) {
