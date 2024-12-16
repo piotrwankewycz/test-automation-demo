@@ -10,7 +10,7 @@ public class LoggedAssert {
     private LoggedAssert() {
     }
 
-    private static <T> void assertEqualsGeneric(T actual, T expected, String message) {
+    private static void assertEqualsGeneric(Object actual, Object expected, String message) {
         try {
             Assert.assertEquals(actual, expected, message);
             log.info("Assertion PASSED: {} - Expected: '{}', Actual: '{}'", message, expected, actual);
