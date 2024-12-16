@@ -12,6 +12,7 @@ public class APIBase extends BaseTest {
     @BeforeClass
     public void setUp() {
         requestSpec = given()
+                .baseUri(APIConfig.getBaseUrl())
                 .auth()
                 .preemptive()
                 .basic(APIConfig.getEmail(), APIConfig.getToken())
